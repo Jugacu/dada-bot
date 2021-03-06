@@ -6,7 +6,9 @@ import logger from '../../utils/logger'
 @injectable()
 export default class Say extends Command {
 	exec(args: string[]): boolean {
-		this.message?.channel.send(args.join(' ')).catch()
+		const [command, ...message] = args;
+
+		this.message?.channel.send(message.join(' ')).catch()
 
 		this.message?.delete().catch(() => {
 			logger.warn(`Couldn't delete a message from '${ this.message?.author.username }' in channel '${ this.message?.channel.id }'`)
