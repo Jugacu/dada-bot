@@ -62,6 +62,6 @@ export default class BulkRename extends AdminCommand {
     }
 
     public get description(): string {
-        return 'Shows some bot information';
+        return 'Renames all the users with a random product name';
     }
 }
