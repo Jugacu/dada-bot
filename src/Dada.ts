@@ -1,24 +1,31 @@
-import { singleton } from 'tsyringe'
+import { singleton } from 'tsyringe';
 
-import Discord, { Client } from 'discord.js'
-import { EventManager } from './discord/EventManager'
-import { CommandManager } from './discord/CommandManager'
+import Discord, { Client, Intents } from 'discord.js';
+import { EventManager } from './discord/EventManager';
+import { CommandManager } from './discord/CommandManager';
 
 @singleton()
 export class Dada {
-	private readonly client: Client
+    private readonly client: Client
 
-	constructor(
-		private readonly eventManager: EventManager,
-		private readonly commandManager: CommandManager
-	) {
-		this.client = new Discord.Client()
+    public constructor(
+        private readonly eventManager: EventManager,
+        private readonly commandManager: CommandManager,
+    ) {
+        const intents = new Intents(Intents.NON_PRIVILEGED);
+        intents.add('GUILD_MEMBERS');
 
-		commandManager.init()
-		eventManager.init(this.client)
-	}
+        this.client = new Discord.Client({
+            ws: {
+                intents,
+            },
+        });
 
-	public getClient() {
-		return this.client
-	}
+        commandManager.init();
+        eventManager.init(this.client);
+    }
+
+    public getClient() {
+        return this.client;
+    }
 }

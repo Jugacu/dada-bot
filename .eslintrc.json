@@ -1,22 +1,32 @@
 {
-    "env": {
-        "browser": true,
-        "es2020": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
-    ],
+    "extends": ["airbnb"],
+    "plugins": ["@typescript-eslint"],
     "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 11,
-        "sourceType": "module"
+    "env": {
+        "browser": false,
+        "node": true
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
     "rules": {
-        "semi": [2, "never"]
+        "no-console": "off",
+        "indent": ["error", 4],
+        "no-underscore-dangle": "off",
+        "no-unused-vars": "off",
+        "no-restricted-syntax": "off",
+        "no-nested-ternary": "off",
+        "lines-between-class-members": "off",
+        "no-unused-expressions": "off",
+        "class-methods-use-this": "off",
+        "max-len": ["error", 120],
+        "linebreak-style": "off",
+        "no-continue": "off",
+        "dot-notation": "off",
+        "quote-props": "off",
+        "no-bitwise": "off",
+        "no-plusplus": "off",
+        "default-case": "off",
+        "@typescript-eslint/explicit-member-accessibility": "error",
+        "import/prefer-default-export": "off",
+        "import/extensions": "off",
+        "import/no-unresolved": "off"
     }
 }
